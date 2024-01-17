@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import './styles.scss';
 
 type Props = {
-  value?: number
+  value: string | null;
+  onClick: (value: MouseEvent) => void;
 }
 
-export const Square = ({ value }: Props) => {
-  const handleClick = () => {
-    console.log("click!");
-  }
-
+export const Square = ({value, onClick}: Props) => {
   return (
     <button
       className="square"
-      onClick={handleClick}
+      onClick={onClick}
     >
       {value}
     </button>
