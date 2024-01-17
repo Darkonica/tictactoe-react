@@ -37,14 +37,26 @@ export const Board = () => {
   }
 
 
-  const winner = calculateWinner();
+
+
+  const getCurrentGameStatus = () => {
+    const winner = calculateWinner();
+    let statusText = '';
+
+    if (winner) {
+      statusText = `Winner is: ${winner}`;
+    } else {
+      statusText = `Next player: ${isXNext ? "X" : "O"}`;
+    }
+    
+    return <div className="status">{statusText}</div>;
+  }
 
   return (
     <div className='board'>
-      {winner && (
-        <div className="status">Winner is: {winner}</div>
-      )}
-
+     
+      {getCurrentGameStatus()}
+      
       <div className="board-row">
         <Square value={squares[0]} onClick={() => handleClick(0)} />
         <Square value={squares[1]} onClick={() => handleClick(1)} />
@@ -63,7 +75,7 @@ export const Board = () => {
         <Square value={squares[8]} onClick={() => handleClick(8)} />
       </div>
 
-      {winner && (
+      {calculateWinner() && (
         <div className="new-game-cont">
           <button>New game</button>
         </div>
