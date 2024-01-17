@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Board } from './Board';
+import { Game } from './Game';
 import './App.scss';
 
 const Application: React.FC = () => {
@@ -48,7 +48,7 @@ const Application: React.FC = () => {
       </div>
 
       <div>
-        <Board />
+        <Game />
       </div>
 
       <div className='footer'>

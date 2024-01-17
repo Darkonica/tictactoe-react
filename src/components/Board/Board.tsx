@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Square } from '../Square';
 import './styles.scss';
 
-export const Board = () => {
-  const [isXNext, setIsXNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
+// TODO: add prop types
+export const Board = ({ isXNext, squares, onMove }) => {
 
   const calculateWinner = () => {
     const winnerLines = [
@@ -32,12 +31,9 @@ export const Board = () => {
     const updatedSquares = [...squares];
 
     updatedSquares[num] = isXNext ? 'X' : 'O';
-    setIsXNext(prevState => !prevState);
-    setSquares(updatedSquares);
+
+    onMove(updatedSquares);
   }
-
-
-
 
   const getCurrentGameStatus = () => {
     const winner = calculateWinner();
@@ -75,6 +71,7 @@ export const Board = () => {
         <Square value={squares[8]} onClick={() => handleClick(8)} />
       </div>
 
+      {/* TODO: make this button works */}
       {calculateWinner() && (
         <div className="new-game-cont">
           <button>New game</button>
