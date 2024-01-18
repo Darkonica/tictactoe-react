@@ -19,6 +19,7 @@ isDevelopment
 const config: webpack.Configuration = {
   mode: isDevelopment ? 'development' : 'production',
   devServer: {
+    hot: true,
     port: 3000,
   },
   entry: './src/index.tsx', // codes will be inside src folder
